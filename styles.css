@@ -1,0 +1,852 @@
+:root {
+    --primary: #4CAF50;
+    --secondary: #FFC107;
+    --accent: #2196F3;
+    --danger: #F44336;
+    --light: #F9F9F9;
+    --dark: #333;
+    --success: #8BC34A;
+    --warning: #FF9800;
+    --purple: #9C27B0;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background: linear-gradient(135deg, #e0f7fa 0%, #f9fbe7 100%);
+    color: var(--dark);
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header Styles */
+header {
+    background-color: white;
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: var(--shadow);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo h1 {
+    font-family: 'Comic Neue', cursive;
+    color: var(--primary);
+    font-size: 2.2rem;
+}
+
+.logo-icon {
+    font-size: 2.5rem;
+    color: var(--secondary);
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--dark);
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 50px;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+nav a:hover, nav a.active {
+    background-color: var(--primary);
+    color: white;
+}
+
+/* Card Styles */
+.card {
+    background-color: white;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+}
+
+.card h2 {
+    color: var(--primary);
+    margin-bottom: 20px;
+    font-family: 'Comic Neue', cursive;
+    border-bottom: 3px dashed var(--secondary);
+    padding-bottom: 10px;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.form-control {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: border 0.3s;
+}
+
+.form-control:focus {
+    border-color: var(--accent);
+    outline: none;
+}
+
+select.form-control {
+    cursor: pointer;
+}
+
+/* Button Styles */
+.btn {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btn:hover {
+    background-color: #3d8b40;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-secondary {
+    background-color: var(--accent);
+}
+
+.btn-secondary:hover {
+    background-color: #1976D2;
+}
+
+.btn-warning {
+    background-color: var(--warning);
+}
+
+.btn-warning:hover {
+    background-color: #F57C00;
+}
+
+.btn-danger {
+    background-color: var(--danger);
+}
+
+.btn-danger:hover {
+    background-color: #D32F2F;
+}
+
+.btn-purple {
+    background-color: var(--purple);
+}
+
+.btn-purple:hover {
+    background-color: #7B1FA2;
+}
+
+.btn-small {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+}
+
+/* Account Overview */
+.account-overview {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: white;
+    padding: 30px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    box-shadow: var(--shadow);
+}
+
+.balance {
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 20px 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.account-number {
+    font-size: 1.2rem;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 10px 20px;
+    border-radius: 50px;
+    display: inline-block;
+}
+
+/* Quick Actions */
+.quick-actions {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.action-btn {
+    background-color: white;
+    color: var(--primary);
+    border: none;
+    padding: 15px;
+    border-radius: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.action-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.action-btn i {
+    font-size: 1.8rem;
+}
+
+/* Investment Cards */
+.investment-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.investment-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 25px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.investment-card.fd {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.investment-card.crypto {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.investment-card.stocks {
+    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+}
+
+.investment-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.investment-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.investment-card .return-rate {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+.investment-card .description {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.investment-icon {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 3rem;
+    opacity: 0.3;
+}
+
+/* Portfolio Display */
+.portfolio-item {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    border-left: 5px solid var(--primary);
+}
+
+.portfolio-item.fd {
+    border-left-color: #f5576c;
+}
+
+.portfolio-item.crypto {
+    border-left-color: #00f2fe;
+}
+
+.portfolio-item.stocks {
+    border-left-color: #38f9d7;
+}
+
+.portfolio-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.portfolio-value {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.profit-positive {
+    color: var(--success);
+    font-weight: bold;
+}
+
+.profit-negative {
+    color: var(--danger);
+    font-weight: bold;
+}
+
+/* Crypto Market */
+.crypto-list {
+    display: grid;
+    gap: 15px;
+}
+
+.crypto-item {
+    background-color: #f5f5f5;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.crypto-item:hover {
+    background-color: #e8f5e9;
+    transform: translateX(5px);
+}
+
+.crypto-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.crypto-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.crypto-price {
+    text-align: right;
+}
+
+.price-change.up {
+    color: var(--success);
+}
+
+.price-change.down {
+    color: var(--danger);
+}
+
+/* Transactions */
+.transaction-list {
+    margin-top: 20px;
+}
+
+.transaction {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.transaction:last-child {
+    border-bottom: none;
+}
+
+.transaction-income {
+    color: var(--success);
+    font-weight: bold;
+}
+
+.transaction-expense {
+    color: var(--warning);
+    font-weight: bold;
+}
+
+/* Goals */
+.goals-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.goal-item {
+    background-color: #f5f5f5;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.goal-progress {
+    height: 10px;
+    background-color: #ddd;
+    border-radius: 5px;
+    margin: 15px 0;
+    overflow: hidden;
+}
+
+.goal-progress-bar {
+    height: 100%;
+    background-color: var(--success);
+    border-radius: 5px;
+    transition: width 0.3s;
+}
+
+/* Games */
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.game-card {
+    background-color: #f5f5f5;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.game-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    background-color: #e8f5e9;
+}
+
+.game-card i {
+    font-size: 3rem;
+    color: var(--accent);
+    margin-bottom: 15px;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 20px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #999;
+}
+
+.close-modal:hover {
+    color: #333;
+}
+
+/* Notification */
+.notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--success);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    display: none;
+    z-index: 1001;
+    animation: slideIn 0.3s ease-out;
+}
+
+.notification.show {
+    display: block;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(400px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Avatar */
+.avatar {
+    width: 60px;
+    height: 60px;
+    background-color: var(--secondary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    color: white;
+    font-weight: bold;
+}
+
+/* Page Container */
+.page-container {
+    display: none;
+}
+
+.page-container.active {
+    display: block;
+}
+
+/* Dashboard Section */
+.dashboard-section {
+    display: none;
+}
+
+.active-section {
+    display: block !important;
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+/* Stats Cards */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    text-align: center;
+}
+
+.stat-card i {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.stat-card.deposits i {
+    color: var(--success);
+}
+
+.stat-card.investments i {
+    color: var(--purple);
+}
+
+.stat-card.goals i {
+    color: var(--accent);
+}
+
+.stat-card.games i {
+    color: var(--warning);
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--dark);
+}
+
+.stat-label {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Features Grid */
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.feature {
+    background-color: white;
+    padding: 30px 20px;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    text-align: center;
+}
+
+.feature i {
+    font-size: 3rem;
+    color: var(--accent);
+    margin-bottom: 20px;
+}
+
+/* Tabs */
+.tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.tab {
+    padding: 10px 20px;
+    border-radius: 50px;
+    background-color: #f5f5f5;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: 2px solid transparent;
+}
+
+.tab:hover {
+    background-color: #e0e0e0;
+}
+
+.tab.active {
+    background-color: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+/* Progress Ring */
+.progress-ring {
+    width: 120px;
+    height: 120px;
+    margin: 20px auto;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .main-content {
+        grid-template-columns: 1fr;
+    }
+    
+    header {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .balance {
+        font-size: 2.5rem;
+    }
+
+    .logo h1 {
+        font-size: 1.5rem;
+    }
+
+    .investment-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Loading Spinner */
+.spinner {
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid var(--primary);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Switch Form */
+.switch-form {
+    margin-top: 20px;
+    color: #666;
+    text-align: center;
+}
+
+.switch-form a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.switch-form a:hover {
+    text-decoration: underline;
+}
+
+/* Homepage */
+.homepage {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.homepage h2 {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 20px;
+    font-family: 'Comic Neue', cursive;
+}
+
+.homepage p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto 40px;
+    line-height: 1.6;
+}
+
+/* Login/Register Container */
+.login-container, .register-container {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.login-form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    margin-top: 50px;
+    padding: 20px;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Achievement Badge */
+.achievement-badge {
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 20px;
+    background-color: var(--secondary);
+    color: white;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin: 5px;
+}
+
+/* Educational Tooltip */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: help;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 10px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -100px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
