@@ -9,6 +9,11 @@
     <meta name="description" content="Educational banking and investment platform for kids">
     <meta name="theme-color" content="#4CAF50">
     <link rel="manifest" href="manifest.json">
+
+    <!-- iOS PWA support -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Children Bank">
     
     <!-- External Resources -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -370,16 +375,12 @@
             <span class="close-modal" data-modal="transfer-modal">&times;</span>
             <h2>🔄 Transfer CB Coins</h2>
             <div class="form-group">
-                <label for="transfer-to">Transfer To (Account ID)</label>
-                <input type="text" id="transfer-to" class="form-control" placeholder="e.g., CB-100000002">
+                <label for="transfer-recipient">Recipient Account ID</label>
+                <input type="text" id="transfer-recipient" class="form-control" placeholder="Enter recipient ID">
             </div>
             <div class="form-group">
-                <label for="transfer-amount">Amount (CB Coins)</label>
+                <label for="transfer-amount">Amount</label>
                 <input type="number" id="transfer-amount" class="form-control" placeholder="Enter amount" min="1">
-            </div>
-            <div class="form-group">
-                <label for="transfer-note">Note (Optional)</label>
-                <input type="text" id="transfer-note" class="form-control" placeholder="Add a note">
             </div>
             <button id="confirm-transfer" class="btn" style="width: 100%;">
                 <i class="fas fa-exchange-alt"></i> Transfer
@@ -387,48 +388,79 @@
         </div>
     </div>
 
-    <div id="add-goal-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" data-modal="add-goal-modal">&times;</span>
-            <h2>🎯 Create New Savings Goal</h2>
-            <div class="form-group">
-                <label for="goal-name">Goal Name</label>
-                <input type="text" id="goal-name" class="form-control" placeholder="e.g., New Bicycle, Video Game">
-            </div>
-            <div class="form-group">
-                <label for="goal-target">Target Amount (CB Coins)</label>
-                <input type="number" id="goal-target" class="form-control" placeholder="Enter target amount" min="1">
-            </div>
-            <div class="form-group">
-                <label for="goal-icon">Goal Icon</label>
-                <select id="goal-icon" class="form-control">
-                    <option value="bicycle">🚲 Bicycle</option>
-                    <option value="game">🎮 Video Game</option>
-                    <option value="book">📚 Book</option>
-                    <option value="toy">🧸 Toy</option>
-                    <option value="phone">📱 Phone</option>
-                    <option value="laptop">💻 Laptop</option>
-                    <option value="other">🎯 Other</option>
-                </select>
-            </div>
-            <button id="confirm-goal" class="btn" style="width: 100%;">
-                <i class="fas fa-bullseye"></i> Create Goal
-            </button>
+    <!-- PWA Install + Service Worker Script -->
+    <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(() => console.log('Service Worker registered'))
+          .catch(err => console.error('SW registration failed', err));
+      });
+    }
+
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      showInstallBanner();
+    });
+
+    function showInstallBanner() {
+      if (document.getElementById('install-banner')) return;
+
+      const banner = document.createElement('div');
+      banner.id = 'install-banner';
+      banner.style.cssText =
+        'position:fixed;bottom:0;left:0;right:0;' +
+        'background:linear-gradient(135deg,#4CAF50,#2196F3);' +
+        'color:white;padding:15px;text-align:center;' +
+        'z-index:10000;box-shadow:0 -4px 12px rgba(0,0,0,0.2)';
+
+      banner.innerHTML = `
+        <div style="max-width:600px;margin:0 auto">
+          <p style="margin:0 0 8px;font-weight:bold;font-size:1.1rem">
+            Install Children's Bank App
+          </p>
+          <p style="margin:0 0 12px;font-size:0.9rem">
+            Add to home screen for quick access
+          </p>
+          <button onclick="installApp()" style="
+            background:white;color:#4CAF50;border:none;
+            padding:10px 25px;border-radius:30px;
+            font-weight:bold;cursor:pointer;margin-right:10px">
+            Install
+          </button>
+          <button onclick="dismissInstall()" style="
+            background:rgba(255,255,255,0.2);
+            color:white;border:2px solid white;
+            padding:10px 25px;border-radius:30px;
+            font-weight:bold;cursor:pointer">
+            Later
+          </button>
         </div>
-    </div>
+      `;
 
-    <div id="investment-modal" class="modal">
-        <div class="modal-content"></div>
-    </div>
+      document.body.appendChild(banner);
+    }
 
-    <div id="notification" class="notification"></div>
+    function installApp() {
+      if (!deferredPrompt) return;
 
-    <footer class="footer">
-        <p>Children's Bank of India © 2024 | A fun and educational platform for kids to learn about banking & investing</p>
-        <p><strong>Note:</strong> This is a demonstration website. CB Coins and investments are virtual for educational purposes only.</p>
-    </footer>
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then(() => {
+        deferredPrompt = null;
+        dismissInstall();
+      });
+    }
 
-    <!-- JavaScript -->
-    <script src="script.js"></script>
+    function dismissInstall() {
+      const banner = document.getElementById('install-banner');
+      if (banner) banner.remove();
+    }
+    </script>
+
+    <!-- Main JS -->
+    <script src="main.js"></script>
 </body>
 </html>
